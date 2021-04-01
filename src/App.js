@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+// MODULES
+import React, { useState } from 'react';
+import { Switch, Route, withRouter, useHistory } from 'react-router-dom';
+
+// COMPONENTS
+import Register from './Pages/Register';
+import Lobby from './Pages/Lobby';
+import Gameplay from './Pages/Gameplay'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Switch>
+                <Route path="/" component={Register} exact />
+                <Route path='/lobby/:key/:user' component={Lobby} />
+                <Route path='/gameplay/:table/:key' component={Gameplay} />
+            </Switch>
+        </div>
+    );
 }
 
-export default App;
+export default withRouter(App);
